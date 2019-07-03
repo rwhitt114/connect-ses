@@ -1,0 +1,10 @@
+---
+[all:vars]
+ansible_user=admin
+#ansible_password=Password123
+ansible_password=58NFaGDJm(PJH0G
+ansible_become_password=58NFaGDJm(PJH0G
+#ansible_become_password=Password123
+[DC1_SEs]
+se01 ansible_host=10.10.26.29
+
