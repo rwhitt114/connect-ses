@@ -10,7 +10,11 @@
     - name: Fix secure channel common name
         content: "secure_channel_cert_common_name"
 	dest: /bootstrap/cn.txt
-    - name: restart se_supervisor process
+    - name: stop se_supervisor process
         systemd:
     	state: stopped
     	name: se_supervisor.service
+    - name: start se_supervisor process
+        systemd:
+        state: started
+        name: se_supervisor.service
