@@ -9,7 +9,7 @@
         dest: /bootstrap/cacert.pem
     - name: Fix secure channel common name
         content: "secure_channel_cert_common_name"
-	dest: /bootstrap/cn.txt
+        dest: /bootstrap/cn.txt
     - name: stop se_supervisor process
         systemd:
     	state: stopped
