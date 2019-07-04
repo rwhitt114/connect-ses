@@ -17,9 +17,10 @@
     
     - name: Fix secure channel common name
       copy:  
-        content: "avicontroller.avi.local"
+        content: "secure_channel_cert_common_name"
         dest: /bootstrap/cn.txt
     
+
     - name: stop se_supervisor process
       systemd:
         state: stopped
