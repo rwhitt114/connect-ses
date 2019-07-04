@@ -1,0 +1,12 @@
+---
+- hosts: dc01_ctlr
+  gather_facts: no
+  become: yes
+  vars_files:
+    - ses.yml
+  tasks:  
+    - name: Connect SE's via script 
+      script: sync_secure_channel_cert_se.py --se {{item}}
+      args:
+        chdir: /opt/avi/scripts
+      with_items: "{{dc1_ses}}"

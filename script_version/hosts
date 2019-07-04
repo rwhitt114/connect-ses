@@ -4,6 +4,6 @@ ansible_user=admin
 ansible_password=
 ansible_become_password=
 
-[DC1_SEs]
-se01 ansible_host=10.10.26.19
-se02 ansible_host=10.10.26.18
+[ctlr]
+dc01_ctlr ansible_host=10.90.88.223
+

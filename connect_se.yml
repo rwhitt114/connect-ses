@@ -2,19 +2,30 @@
 - hosts: DC1_SEs
   gather_facts: no
   become: yes
+  vars:
+    controller_ip: 10.90.88.223
   tasks:  
+    - name: Set controller IP
+      copy:
+        content: '{{controller_ip}}'
+        dest: /var/lib/avi/etc/zk_ovf_ip.txt
+
     - name: Copy Secure channel cert to SE 
       copy:
-        src: /path/to/cacert.pem
+        src: ./cacert.pem
         dest: /bootstrap/cacert.pem
+    
     - name: Fix secure channel common name
-        content: "secure_channel_cert_common_name"
-	dest: /bootstrap/cn.txt
+      copy:  
+        content: "avicontroller.avi.local"
+        dest: /bootstrap/cn.txt
+    
     - name: stop se_supervisor process
-        systemd:
-    	state: stopped
-    	name: se_supervisor.service
+      systemd:
+        state: stopped
+        name: se_supervisor.service
+    
     - name: start se_supervisor process
-        systemd:
+      systemd:
         state: started
         name: se_supervisor.service
